@@ -1,0 +1,120 @@
+#! /opt/local/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/local/lib/ivl/system.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/local/lib/ivl/va_math.vpi";
+S_0x7f8a9b904290 .scope module, "labK" "labK" 2 1;
+ .timescale 0 0;
+L_0x600000dcc540 .functor XOR 1, v0x6000014cce10_0, v0x6000014ccb40_0, C4<0>, C4<0>;
+L_0x600000dcc5b0 .functor BUFZ 1, L_0x600000dcc540, C4<0>, C4<0>, C4<0>;
+L_0x600000dcc620 .functor AND 1, v0x6000014cce10_0, v0x6000014ccb40_0, C4<1>, C4<1>;
+L_0x600000dcc690 .functor BUFZ 1, L_0x600000dcc620, C4<0>, C4<0>, C4<0>;
+L_0x600000dcc700 .functor XOR 1, v0x6000014ccea0_0, L_0x600000dcc5b0, C4<0>, C4<0>;
+L_0x600000dcc770 .functor BUFZ 1, L_0x600000dcc700, C4<0>, C4<0>, C4<0>;
+L_0x600000dcc7e0 .functor AND 1, v0x6000014ccea0_0, L_0x600000dcc5b0, C4<1>, C4<1>;
+L_0x600000dcc850 .functor BUFZ 1, L_0x600000dcc7e0, C4<0>, C4<0>, C4<0>;
+L_0x600000dcc8c0 .functor OR 1, L_0x600000dcc690, L_0x600000dcc850, C4<0>, C4<0>;
+L_0x600000dcc930 .functor BUFZ 1, L_0x600000dcc8c0, C4<0>, C4<0>, C4<0>;
+v0x6000014ccb40_0 .var "a", 0 0;
+v0x6000014ccbd0_0 .net "and1_output", 0 0, L_0x600000dcc620;  1 drivers
+v0x6000014ccc60_0 .net "and1_wire", 0 0, L_0x600000dcc690;  1 drivers
+v0x6000014cccf0_0 .net "and2_output", 0 0, L_0x600000dcc7e0;  1 drivers
+v0x6000014ccd80_0 .net "and2_wire", 0 0, L_0x600000dcc850;  1 drivers
+v0x6000014cce10_0 .var "b", 0 0;
+v0x6000014ccea0_0 .var "cin", 0 0;
+v0x6000014ccf30_0 .net "cout", 0 0, L_0x600000dcc930;  1 drivers
+v0x6000014ccfc0_0 .var "expect", 1 0;
+v0x6000014cd050_0 .var/i "i", 31 0;
+v0x6000014cd0e0_0 .var/i "j", 31 0;
+v0x6000014cd170_0 .var/i "k", 31 0;
+v0x6000014cd200_0 .net "or_output", 0 0, L_0x600000dcc8c0;  1 drivers
+v0x6000014cd290_0 .net "xor1_output", 0 0, L_0x600000dcc540;  1 drivers
+v0x6000014cd320_0 .net "xor1_wire", 0 0, L_0x600000dcc5b0;  1 drivers
+v0x6000014cd3b0_0 .net "xor2_output", 0 0, L_0x600000dcc700;  1 drivers
+v0x6000014cd440_0 .net "z", 0 0, L_0x600000dcc770;  1 drivers
+    .scope S_0x7f8a9b904290;
+T_0 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x6000014cd050_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x6000014cd050_0;
+    %cmpi/s 2, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x6000014cd0e0_0, 0, 32;
+T_0.2 ;
+    %load/vec4 v0x6000014cd0e0_0;
+    %cmpi/s 2, 0, 32;
+    %jmp/0xz T_0.3, 5;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x6000014cd170_0, 0, 32;
+T_0.4 ;
+    %load/vec4 v0x6000014cd170_0;
+    %cmpi/s 2, 0, 32;
+    %jmp/0xz T_0.5, 5;
+    %load/vec4 v0x6000014cd050_0;
+    %pad/s 1;
+    %store/vec4 v0x6000014ccb40_0, 0, 1;
+    %load/vec4 v0x6000014cd0e0_0;
+    %pad/s 1;
+    %store/vec4 v0x6000014cce10_0, 0, 1;
+    %load/vec4 v0x6000014cd170_0;
+    %pad/s 1;
+    %store/vec4 v0x6000014ccea0_0, 0, 1;
+    %load/vec4 v0x6000014ccb40_0;
+    %pad/u 2;
+    %load/vec4 v0x6000014cce10_0;
+    %pad/u 2;
+    %add;
+    %load/vec4 v0x6000014ccea0_0;
+    %pad/u 2;
+    %add;
+    %store/vec4 v0x6000014ccfc0_0, 0, 2;
+    %delay 1, 0;
+    %load/vec4 v0x6000014ccfc0_0;
+    %parti/s 1, 0, 2;
+    %load/vec4 v0x6000014cd440_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %jmp/0 T_0.8, 6;
+    %load/vec4 v0x6000014ccfc0_0;
+    %parti/s 1, 1, 2;
+    %load/vec4 v0x6000014ccf30_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %and;
+T_0.8;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.6, 8;
+    %vpi_call 2 34 "$display", "PASS: a=%b b=%b cin=%b cout=%b z=%b expect=%b", v0x6000014ccb40_0, v0x6000014cce10_0, v0x6000014ccea0_0, v0x6000014ccf30_0, v0x6000014cd440_0, v0x6000014ccfc0_0 {0 0 0};
+    %jmp T_0.7;
+T_0.6 ;
+    %vpi_call 2 36 "$display", "FAIL: a=%b b=%b cin=%b cout=%b z=%b expect=%b", v0x6000014ccb40_0, v0x6000014cce10_0, v0x6000014ccea0_0, v0x6000014ccf30_0, v0x6000014cd440_0, v0x6000014ccfc0_0 {0 0 0};
+T_0.7 ;
+    %load/vec4 v0x6000014cd170_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x6000014cd170_0, 0, 32;
+    %jmp T_0.4;
+T_0.5 ;
+    %load/vec4 v0x6000014cd0e0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x6000014cd0e0_0, 0, 32;
+    %jmp T_0.2;
+T_0.3 ;
+    %load/vec4 v0x6000014cd050_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x6000014cd050_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %vpi_call 2 40 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "labK9.v";
